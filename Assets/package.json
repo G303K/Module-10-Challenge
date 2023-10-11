@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "type": "module",
     "inquirer": "^9.2.11",
     "svg.js": "^2.7.1"
+    
   }
 }
