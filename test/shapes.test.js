@@ -8,31 +8,31 @@ const testCases = [
   },
   {
     desc: "should throw error if logo text is longer than 3",
-    input: { logoName: "john" },
+    input: { logoName: "timmy" },
     expectedErr: new Error("Logo text cannot be more than 3 characters"),
   },
   {
     desc: "should throw error if input is not a valid CSS color",
-    input: { logoName: "Ted", textColour: "NotColour" },
+    input: { logoName: "Bob", textColour: "NotColour" },
     expectedErr: new Error(
       "Please enter a valid CSS color keyword or hex code"
     ),
   },
   {
     desc: "should throw an error if render() is called",
-    input: { logoName: "Ted", textColour: "green", bgColour: "purple" },
+    input: { logoName: "Bob", textColour: "green", bgColour: "purple" },
     expectedErr: new Error("Child shapes must implement a render() method"),
     shouldRender: true,
   },
   {
     desc: "should add background color if it is a valid color",
-    input: { logoName: "Ted", textColour: "green", logoColour: "purple" },
+    input: { logoName: "Bob", textColour: "green", logoColour: "purple" },
     expectedKey: "logoColour",
     expectedValue: "purple",
   },
   {
     desc: "should add text color if it is a valid color",
-    input: { logoName: "Ted", textColour: "red", logoColour: "purple" },
+    input: { logoName: "Bob", textColour: "red", logoColour: "purple" },
     expectedKey: "textColour",
     expectedValue: "red",
   },
