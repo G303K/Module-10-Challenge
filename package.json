@@ -1,16 +1,32 @@
 {
-  "name": "your-project-name",
-  "version": "1.0.0",
-  "description": "Your project description",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "inquirer": "^8.2.3"
-  },
-  "author": "Your Name",
-  "license": "MIT"
-}
-
-  
+    "name": "svg-logo-maker",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "directories": {
+      "example": "examples",
+      "lib": "lib"
+    },
+    "scripts": {
+      "start": "node index.js",
+      "test": "jest"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/johnxlai/svg-logo-maker.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/johnxlai/svg-logo-maker/issues"
+    },
+    "homepage": "https://github.com/johnxlai/svg-logo-maker#readme",
+    "dependencies": {
+      "inquirer": "^8.2.4",
+      "is-css3-color": "^1.0.0"
+    },
+    "devDependencies": {
+      "jest": "^29.4.2"
+    }
+  }

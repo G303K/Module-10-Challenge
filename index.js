@@ -1,47 +1,39 @@
-import inquirer from 'inquirer';
-import { SVG, registerWindow } from '@svgdotjs/svg.js';
-
-const fs = require('fs');
 const inquirer = require('inquirer');
-const { SVG, registerWindow } = require('@svgdotjs/svg.js');
+const fs = require('fs');
+const { generateSvg } = require('./lib/generateSvg');
+const { makeShape } = require('./lib/makeShape');
 
-// Initialize SVG.js
-registerWindow(global, global.document);
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'logoName',
+      message: 'Please enter text, must not be more than 3 letters',
+    },
+    {
+      type: 'input',
+      name: 'textColour',
+      message: `Please enter text colour keyword or a hexadecimal number for the logo's test color`,
+    },
+    {
+      type: 'input',
+      name: 'logoColour',
+      message: `Please enter a colour keyword or a hexadecimal number for the logo's background colour`,
+    },
+    {
+      type: 'list',
+      name: 'logoShape',
+      message: `Please choose logo shape`,
+      choices: ['triangle', 'circle', 'square'],
+    },
+  ])
+  .then((data) => {
+    const svgPath = './dist/logo.svg';
+    const finalLogo = makeShape(data);
 
-// Create an SVG canvas
-const canvas = SVG().size(400, 200);
-
-inquirer.prompt([
-  {
-    type: 'list',
-    name: 'shape',
-    message: 'Select a shape for your logo:',
-    choices: ['Circle', 'Square', 'Triangle'],
-  },
-  {
-    type: 'input',
-    name: 'text',
-    message: 'Enter the text for your logo:',
-  },
-  {
-    type: 'input',
-    name: 'color',
-    message: 'Enter a color (e.g., #FF5733):',
-  },
-]).then((answers) => {
-  // Create the selected shape with the provided color
-  const shape = canvas.select('body').ellipse(100, 100);
-
-  if (answers.shape === 'Square') {
-    shape.rect(100, 100);
-  } else if (answers.shape === 'Triangle') {
-    shape.polygon('50,0 100,100 0,100');
-  }
-
-  shape.fill(answers.color);
-  shape.text(answers.text).move(10, 10).font({ size: 20 });
-
-  // Save the SVG to a file
-  fs.writeFileSync('logo.svg', canvas.svg());
-  console.log('Logo saved as logo.svg');
-});
+    //Generate the svg logo here.
+    fs.writeFile(svgPath, generateSvg(finalLogo), (err) =>
+      err ? console.error(err) : console.log('Generated logo.svg')
+    );
+  })
+  .catch((err) => console.error(err));
