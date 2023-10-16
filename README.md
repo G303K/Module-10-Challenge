@@ -30,7 +30,7 @@ To open the file, drag the .svg to the desktop and open it using a web browser.
 
 ## Google Drive Video Link
 
-- (*PLACEHOLDER LINK*)
+- https://drive.google.com/file/d/1W-z0L5v8602_ux2G_UUNf1C9Rh6aX_VM/view
 
 ## Installation
 
